@@ -11,9 +11,15 @@ int main()
         fgets(tempHolder, 10, stdin);
         if (strchr(tempHolder, '\n')) // if the string has a newline character
         {
-            *(strchr(tempHolder, '\n')) = '\0'; // replace the newline character with a null terminator
+            *(strchr(tempHolder, '\n')) = '\0'; // replace the newline character with a null terminator (strchr() returns a pointer to that char)
         }
         fullStr = (char*) realloc(fullStr, strlen(fullStr ? fullStr : "") + strlen(tempHolder)); // add memory space to the dest string
+        if (fullStr == NULL){
+            printf("Error: Not enough memory!\n");
+            free(fullStr);
+            fullStr = NULL;
+            return -1;
+        }
         strcat(fullStr, tempHolder); // append the temp string to the dest string
         printf("test1: %s\n", fullStr);
     } while (strlen(tempHolder) == 9); // if the temp string is full, keep looping
