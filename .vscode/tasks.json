@@ -10,7 +10,7 @@
 				"-g",
 				"${file}",
 				"-Wall", //Show minor warnings
-				"-Werror",
+				// "-Werror",
 				"-o",
 				"${fileDirname}/bin/${fileBasenameNoExtension}"
 			],
